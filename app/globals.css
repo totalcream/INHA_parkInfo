@@ -109,3 +109,12 @@ body {
   margin: auto;
   height : auto;  
 }
+
+
+  .image-container {
+    display: flex; /* 자식 요소를 플렉스 컨테이너로 설정 */
+  }
+
+  .green1-img {
+    margin-right: 5px; /* 이미지 사이 간격 조절 */
+  }
