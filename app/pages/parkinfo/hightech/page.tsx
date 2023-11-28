@@ -4,16 +4,9 @@
 // import { unstable_noStore as noStore } from "next/cache";
 // import { useState } from "react";
 import Image from "next/image";
-// import styled from "styled-components";
-
-// 2023-11-28 수정
-
-// const P = styled.p`
-//     color: red;
-//     `
-
 import styled from "styled-components";
 import Link from 'next/link';
+
 export default function Cart() {
   // 가정: 주어진 데이터 배열 (0 또는 1 값)
   const data = [1, 1, 0, 1, 0, 1, 0, 1, 0];
@@ -53,7 +46,17 @@ export default function Cart() {
   );
 }
 
-function CartItem({ k}) {
+// function CartItem({ k }) {
+//   return (
+//     <div className="cart-item">
+//       <p>하이테크 </p>
+//       <p>{k}칸</p>
+//       <p>9칸</p>
+//     </div>
+//   );
+// }
+
+function CartItem({ k }: { k: number }) {
   return (
     <div className="cart-item">
       <p>하이테크 </p>
