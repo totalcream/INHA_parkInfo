@@ -6,6 +6,8 @@
 import Image from "next/image";
 import styled from "styled-components";
 
+// 2023-11-28 수정
+
 // const P = styled.p`
 //     color: red;
 //     `
