@@ -80,12 +80,16 @@ body {
   justify-content: space-around;
   border-bottom: 1px solid grey;
   line-height: 0px;
+  margin-top: 50px;
+  font-size: 25px;
 } 
 
 .mybtn {
   width: 100px;
   margin: auto;
   display: block;
+  background-color: burlywood;
+  margin-top: 100px;
 }
 
 .high {
@@ -117,4 +121,16 @@ body {
 
   .green1-img {
     margin-right: 5px; /* 이미지 사이 간격 조절 */
+  }
+
+  .title-miss {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 24px;
+  }
+
+  .title-miss2 {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 24px;
   }
