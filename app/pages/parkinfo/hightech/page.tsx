@@ -1,7 +1,5 @@
 'use client'
 
-import Image from "next/image";
-import styled from "styled-components";
 import { Myarr } from "@/pages/api/gethttp";
 import { useState, useReducer, useEffect } from "react";
 import Parkinfo from "@/app/container/cart";
@@ -18,12 +16,7 @@ function CartItem({ k }: { k: number }) {
 
 export default function Cart() {
 
-  // 가정: 주어진 데이터 배열 (0 또는 1 값)
-  const data = [1, 1, 0, 1, 0, 1, 0, 1, 0];
-  const countFalseValues = Myarr && Myarr.filter(value => !value).length;
-  // console.log(Myarr);
-
   return (
-    <Parkinfo parkarr={Myarr} />
+    <Parkinfo/>
   )
 }

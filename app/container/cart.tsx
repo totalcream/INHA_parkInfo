@@ -1,6 +1,27 @@
 import Link from "next/link"
+import { useState, useEffect } from "react"
+import { Myarr } from "@/pages/api/gethttp";
+import { observer } from "mobx-react-lite";
+import { Parkupdate } from "../store/Store";
 
-const Parkinfo = ({ parkarr }: { parkarr: Array<boolean> }) => {
+const Parkinfo = observer(() => {
+
+const [parkData, setParkData] = useState(Array(10).fill(false));
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        console.log("useeffect");
+        setParkData(Parkupdate.SensorArr)
+      } catch (error) {
+        console.error('Error fetching data: ', error);
+      }
+    };
+    fetchData();
+  }, []);
+  
+  console.log("parkData");
+  console.log(Parkupdate.SensorArr);
     return (
 
 <div>
@@ -14,10 +35,10 @@ const Parkinfo = ({ parkarr }: { parkarr: Array<boolean> }) => {
 <div className="high">
   <img src="/high1.png" className="park1-img" />
   <div className="image-container">
-    {parkarr && parkarr.map((value, index) => (
+    {Parkupdate.SensorArr && Parkupdate.SensorArr.map((value, index) => (
       <img
         key={index}
-        src={value === true ? '/green1.png' : '/red1.png'}
+        src={value === false ? '/green1.png' : '/red1.png'}
         alt={`주차장 이미지 ${index + 1}`}
         className="green1-img"
       />
@@ -25,11 +46,12 @@ const Parkinfo = ({ parkarr }: { parkarr: Array<boolean> }) => {
   </div>
 </div>
 
+
 <Link href="/">
     <button className='mybtn'>뒤로가기</button>
   </Link>
 </div>
     )
-}
+});
 
 export default Parkinfo
