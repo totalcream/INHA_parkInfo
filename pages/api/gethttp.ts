@@ -1,9 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { comma } from 'postcss/lib/list';
 
 //아두이노 데이터 저장변수
 const Myarr: boolean[] = Array(10).fill(false);
-
 
 export default function handler(
   req: NextApiRequest,
@@ -21,8 +19,6 @@ export default function handler(
       const body = req.body;
 
       console.log(body.SensorValue);
-      // const [arritems, setArrItems] = useState(Array(10).fill(0));
-      // setArrItems(body.SensorValue);
 
       for (let index = 0; index < 10; index++) {
         if(body.SensorValue[index])
@@ -31,10 +27,6 @@ export default function handler(
         Myarr[index] = false;
       }
       console.log(Myarr);
-      // console.log(body.SensorValue);
-      // console.log(body.SensorValue[0]);
-      // console.log(typeof(body.SensorValue[0]));
-      // console.log(arritems);
       break;
 
     default:
