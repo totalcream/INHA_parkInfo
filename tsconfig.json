@@ -22,11 +22,11 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/store/Store.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "stores/Store.js", "pages/_page.js"],
   "exclude": ["node_modules"],
   "presets": ["next/babel"],
-    "plugins": [
-        ["@babel/plugin-proposal-decorators",{"legacy": true}],
-        ["@babel/plugin-proposal-class-properties",{"loose": true}]
-    ]
+  "plugins": [
+      ["@babel/plugin-proposal-decorators",{"legacy": true}],
+      ["@babel/plugin-proposal-class-properties",{"loose": true}]
+  ]
 }

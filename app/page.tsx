@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { Provider } from 'mobx-react'
-import Store from './store/Store'
+import Store from '../stores/Store'
 
 export default function Home() {
 

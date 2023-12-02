@@ -1,4 +1,24 @@
-// `app/page.tsx` is the UI for the `/` URL
-export default function Page() {
-    return <h1>Hello, Home page!</h1>
-  }
+// import { GetServerSideProps, GetServerSideProps } from "next";
+import { Myarr } from "@/pages/api/gethttp";
+
+interface Myarr {
+  Myarr: Array<boolean>;
+}
+
+const ShowDetailPage = ({Myarr}: {Myarr: Array<boolean>}) => {
+  const newData = Myarr;
+
+  console.log(newData);
+  return (
+    <div>
+      <p>Test Pages </p>
+    </div>
+  );
+};
+
+// export const GetServerSideProps: GetServerSideProps = async (context) => {
+//   const arrdata = await fetch('/my-app/pages/api/gethttp.ts')
+//   const 
+
+//   return { props: {} };
+// }

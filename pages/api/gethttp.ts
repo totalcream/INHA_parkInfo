@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { createContext, useContext } from 'react';
 import { observer } from 'mobx-react-lite';
-import { Parkupdate } from '@/app/store/Store';
+import { Parkupdate } from '@/stores/Store';
 
 //아두이노 데이터 저장변수
 
@@ -15,23 +15,24 @@ export default function handler(
   switch (req.method) {
     case 'GET':
       // GET 요청 처리
-      res.status(200).json({ message: 'This is a GET response' });
+      console.log("HTTP GET Called!");
+      res.status(200).json(Parkupdate.SensorArr);
       break;
 
     case 'POST':
       // POST 요청 처리
-      res.status(200).json({ message: 'This is a Post response' });
       const body = req.body;
-
+      
       for (let index = 0; index < 10; index++) {
         if(body.SensorValue[index])
-          Myarr[index] = true;
-        else
-        Myarr[index] = false;
-      }
-      Parkupdate.injectData(Myarr);
-      // console.log(Myarr);
-      break;
+        Myarr[index] = true;
+      else
+      Myarr[index] = false;
+  }
+  Parkupdate.injectData(Myarr);
+  console.log(Parkupdate.SensorArr);
+  res.status(200).json(Parkupdate.SensorArr);
+  break;
 
     default:
       // 다른 HTTP 메서드에 대한 처리

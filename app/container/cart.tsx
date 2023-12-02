@@ -2,26 +2,36 @@ import Link from "next/link"
 import { useState, useEffect } from "react"
 import { Myarr } from "@/pages/api/gethttp";
 import { observer } from "mobx-react-lite";
-import { Parkupdate } from "../store/Store";
+import { Parkupdate } from "../../stores/Store";
+import { fetchArr } from "../pages/parkinfo/hightech/page";
 
-const Parkinfo = observer(() => {
 
-const [parkData, setParkData] = useState(Array(10).fill(false));
+const Parkinfo = observer(({ParkArr}: {ParkArr: Array<boolean>}) => {
+useEffect(() => {
+  const newData = async() => fetchArr();
+  console.log("여기는 컴포넌트");
+  console.log(newData);
+}, []);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        console.log("useeffect");
-        setParkData(Parkupdate.SensorArr)
-      } catch (error) {
-        console.error('Error fetching data: ', error);
-      }
-    };
-    fetchData();
-  }, []);
+// const [parkData, setParkData] = useState(Array(10).fill(false));
+//   useEffect(() => {
+//     const fetchData = async () => {
+//       try {
+//         console.log("useeffect");
+//         setParkData(Parkupdate.SensorArr)
+//       } catch (error) {
+//         console.error('Error fetching data: ', error);
+//       }
+//     };
+//     fetchData();
+//   }, []);
   
-  console.log("parkData");
+  console.log("component_Page");
   console.log(Parkupdate.SensorArr);
+  console.log("component_Page_parkdata");
+  console.log(ParkArr);
+  
+  
     return (
 
 <div>
@@ -35,7 +45,7 @@ const [parkData, setParkData] = useState(Array(10).fill(false));
 <div className="high">
   <img src="/high1.png" className="park1-img" />
   <div className="image-container">
-    {Parkupdate.SensorArr && Parkupdate.SensorArr.map((value, index) => (
+    {ParkArr && ParkArr.map((value, index) => (
       <img
         key={index}
         src={value === false ? '/green1.png' : '/red1.png'}
