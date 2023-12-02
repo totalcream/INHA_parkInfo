@@ -6,7 +6,7 @@ import { Parkupdate } from '@/stores/Store';
 //아두이노 데이터 저장변수
 
 const parkarr = Parkupdate;
-const Myarr: boolean[] = Array(10).fill(false);
+const Myarr: boolean[] = Array(9).fill(false);
 
 export default function handler(
   req: NextApiRequest,
@@ -23,7 +23,7 @@ export default function handler(
       // POST 요청 처리
       const body = req.body;
       
-      for (let index = 0; index < 10; index++) {
+      for (let index = 0; index < 9; index++) {
         if(body.SensorValue[index])
         Myarr[index] = true;
       else

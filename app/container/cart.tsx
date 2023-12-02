@@ -3,15 +3,15 @@ import { useState, useEffect } from "react"
 import { Myarr } from "@/pages/api/gethttp";
 import { observer } from "mobx-react-lite";
 import { Parkupdate } from "../../stores/Store";
-import { fetchArr } from "../pages/parkinfo/hightech/page";
+// import { fetchArr } from "../pages/parkinfo/hightech/page";
 
 
 const Parkinfo = observer(({ParkArr}: {ParkArr: Array<boolean>}) => {
-useEffect(() => {
-  const newData = async() => fetchArr();
-  console.log("여기는 컴포넌트");
-  console.log(newData);
-}, []);
+// useEffect(() => {
+//   const newData = async() => fetchArr();
+//   console.log("여기는 컴포넌트");
+//   console.log(newData);
+// }, []);
 
 // const [parkData, setParkData] = useState(Array(10).fill(false));
 //   useEffect(() => {

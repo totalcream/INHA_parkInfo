@@ -15,10 +15,3 @@ const ShowDetailPage = ({Myarr}: {Myarr: Array<boolean>}) => {
     </div>
   );
 };
-
-// export const GetServerSideProps: GetServerSideProps = async (context) => {
-//   const arrdata = await fetch('/my-app/pages/api/gethttp.ts')
-//   const 
-
-//   return { props: {} };
-// }

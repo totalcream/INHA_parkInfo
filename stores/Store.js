@@ -4,7 +4,7 @@ import { enableStaticRendering } from 'mobx-react-lite'
 enableStaticRendering(typeof window === 'undefined')
 
 export default class Store {
-  SensorArr = Array(10).fill(false);
+  SensorArr = Array(9).fill(false);
 
   constructor() {
     makeAutoObservable(this, {

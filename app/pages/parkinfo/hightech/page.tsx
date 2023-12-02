@@ -1,14 +1,14 @@
-'use client'
 
 import { Myarr } from "@/pages/api/gethttp";
-import { useState, useReducer, useEffect } from "react";
+// import { useState, useReducer, useEffect } from "react";
 import Parkinfo from "@/app/container/cart";
-import { Parkupdate } from "@/stores/Store";
-import { autorun } from "mobx";
+// import { Parkupdate } from "@/stores/Store";
+// import { autorun } from "mobx";
 import { unstable_cache as noStore } from "next/cache";
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { features } from "process";
 import { parseUrl } from "next/dist/shared/lib/router/utils/parse-url";
+import Link from "next/link";
 
 
 
@@ -36,42 +36,43 @@ const fetchArr = async () => {
 };
 
 export default function Cart() {
-  const [parkData, setParkData] = useState([]);
   const newdata = fetchArr();
   console.log("여기는 카트")
-  console.log(newdata);
-  Parkupdate.injectData(newdata);
-  // console.log(newdata);
-  // const data = await fetchArr();
-  // console.log(data);
-  // const newData = await fetch('../../../../pages/api/gethttp.ts')
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       console.log("Fetching Data...");
-  //       const response = await fetch('../../../../pages/api/gethttp');
-  //       if (!response.ok) {
-  //         throw new Error(`HTTP error! Status: ${response.status}`);
-  //       }
+  const countFalseValues = arrData && arrData.filter(value => !value).length
 
-  //       const data = await response.json();
-  //       console.log("Data received: ", data);
-  //       setParkData(data);
-  //     } catch (error) {
-  //       console.error('Error fetching data: ', error);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, []);
-  autorun(() => {
-    <Parkinfo ParkArr={arrData}></Parkinfo>
-  });
-  // console.log("hightech_Page");
-  // console.log(Parkupdate.SensorArr);
   return (
-    <Parkinfo ParkArr={arrData}/>
+      <>
+      <div>
+      <CartItem k={countFalseValues} />
+      </div>
+      {/* <Parkinfo ParkArr={arrData} /> */}
+      <div>
+<h4 className="title-miss">하이테크 주차장 현황</h4>
+<div className="cart-item">
+  <p>건물 이름</p>
+  <p>여석</p>
+  <p>전체좌석</p>
+</div>
+
+<div className="high">
+  <img src="/high1.png" className="park1-img" />
+  <div className="image-container">
+    {arrData && arrData.map((value, index) => (
+      <img
+        key={index}
+        src={value === false ? '/green1.png' : '/red1.png'}
+        alt={`주차장 이미지 ${index + 1}`}
+        className="green1-img"
+      />
+    ))}
+  </div>
+</div>
+
+
+<Link href="/">
+    <button className='mybtn'>뒤로가기</button>
+  </Link>
+</div>
+      </>
   )
 }
-
-export {fetchArr}
