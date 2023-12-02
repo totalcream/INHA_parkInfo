@@ -24,7 +24,7 @@ function CartItem({ k }: { k: number }) {
 }
 
 const fetchArr = async () => {
-  const response = await fetch(('http://localhost:3000/api/gethttp'), {
+  const response = await fetch(('http://localhost:3060/api/gethttp'), {
     cache: "no-cache",
   });
   const data = await response.json()
@@ -41,18 +41,20 @@ export default function Cart() {
   const countFalseValues = arrData && arrData.filter(value => !value).length
 
   return (
-      <>
-      <div>
-      <CartItem k={countFalseValues} />
-      </div>
+    <>
+    <div>
+      <h4 className="title-miss">하이테크 주차장 현황</h4>
+    </div>
       {/* <Parkinfo ParkArr={arrData} /> */}
       <div>
-<h4 className="title-miss">하이테크 주차장 현황</h4>
 <div className="cart-item">
   <p>건물 이름</p>
   <p>여석</p>
   <p>전체좌석</p>
 </div>
+      <div>
+      <CartItem k={countFalseValues} />
+      </div>
 
 <div className="high">
   <img src="/high1.png" className="park1-img" />
