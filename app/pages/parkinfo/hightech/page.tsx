@@ -24,7 +24,7 @@ function CartItem({ k }: { k: number }) {
 }
 
 const fetchArr = async () => {
-  const response = await fetch(('http://localhost:3060/api/gethttp'), {
+  const response = await fetch(('http://localhost:3000/api/gethttp'), {
     cache: "no-cache",
   });
   const data = await response.json()
