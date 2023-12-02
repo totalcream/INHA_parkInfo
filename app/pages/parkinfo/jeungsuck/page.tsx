@@ -1,17 +1,3 @@
-// import { GetServerSideProps, GetServerSideProps } from "next";
-import { Myarr } from "@/pages/api/gethttp";
-
-interface Myarr {
-  Myarr: Array<boolean>;
+export default function Page() {
+  return <h1>Hello, Next.js!</h1>
 }
-
-const ShowDetailPage = ({Myarr}: {Myarr: Array<boolean>}) => {
-  const newData = Myarr;
-
-  console.log(newData);
-  return (
-    <div>
-      <p>Test Pages </p>
-    </div>
-  );
-};
