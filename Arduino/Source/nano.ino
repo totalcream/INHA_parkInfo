@@ -28,9 +28,9 @@
 #define IP "52.79.49.242"
 
 // 주차장 대수에 맞게 배열로 설정하고
-int sensorPin[10] = {A0, A1, A2, 10, 11, 12, A6, A7, A3, A4};
+int sensorPin[9] = {A0, A1, A2, 10, 11, 12, A6, A3, A4};
 // 전부 0으로 설정
-bool sensorState[10] = { 0 };
+bool sensorState[9] = { 0 };
 
 
 // 소프트웨어시리얼 선언
@@ -40,7 +40,7 @@ ESP8266 wifi = ESP8266(esp8266Serial);
 //SoftwareSerial ESP_wifi(BT_RXD, BT_TXD); 
 void setup() { 
   // 핀모드 전부 INPUT으로 바꾸기
-  for(int i = 0; i < 10; i++) {
+  for(int i = 0; i < sizeof(sensorPin)/4; i++) {
     pinMode(sensorPin[i], INPUT);
   }
 
@@ -107,9 +107,9 @@ void setup() {
 } 
 void loop() { 
 
-  // 센서 값 읽기 0~7 아날로그, 8~9 디지털
-  for (int i = 0; i < 10; i++) {
-      // if (i < 8)
+  // 센서 값 읽기 0~6 아날로그, 7~8 디지털
+  for (int i = 0; i < sizeof(sensorPin)/4; i++) {
+      // if (i < 7)
       //   sensorState[i] = analogRead(sensorPin[i]);
       // else
         sensorState[i] = digitalRead(sensorPin[i]);
@@ -123,7 +123,7 @@ void loop() {
   JsonArray SensorValue = json.createNestedArray("SensorValue");
 
   // JSON파일 내 배열에 센서 값 담기
-  for (int i = 0; i<10; i++) {
+  for (int i = 0; i<sizeof(sensorPin)/4; i++) {
     SensorValue.add(sensorState[i]);
   }
 
